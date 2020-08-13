@@ -1,2 +1,2 @@
 com.google.protobuf:protobuf-java = 3.12.4
-io.grpc:* = 1.31.0
+io.grpc:* = 1.31.1
