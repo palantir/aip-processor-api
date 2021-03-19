@@ -1,0 +1,10 @@
+type: improvement
+improvement:
+  description: |-
+    Remove incubating messages from API
+
+    This PR removes the GeoBoundingBox and GeoBoundingPolygon from the API. It's been decided that generally processors should return coordinates in pixel-space, and it is up to a separate component to map pixel coordinates to geodetic coordinates for mapping purposes.
+
+    These message types were added in an incubating fashion and it is not expected that they are being used or will cause widespread breakages.
+  links:
+  - https://github.com/palantir/aip-processor-api/pull/122
