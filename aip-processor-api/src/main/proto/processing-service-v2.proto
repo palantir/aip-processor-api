@@ -140,8 +140,6 @@ message Inference {
     oneof inference {
         BoundingBox box = 2;
         BoundingPolygon polygon = 3;
-        GeoBoundingBox geo_box = 5;
-        GeoBoundingPolygon geo_polygon = 6;
     }
 
     Velocity velocity = 4;
@@ -177,26 +175,8 @@ message BoundingBox {
     repeated Classification classifications = 3;
 }
 
-/*
- * A bounding box defined by a GeoCoordinate pair.
- */
-message GeoBoundingBox {
-    /** Upper left lat/long */
-    GeoCoordinate c0 = 1;
-    
-    /** Lower right lat/long */
-    GeoCoordinate c1 = 2;
-    
-    repeated Classification classifications = 3;
-}
-
 message BoundingPolygon {
     Polygon polygon = 1;
-    repeated Classification classifications = 2;
-}
-
-message GeoBoundingPolygon {
-    GeoPolygon polygon = 1;
     repeated Classification classifications = 2;
 }
 
