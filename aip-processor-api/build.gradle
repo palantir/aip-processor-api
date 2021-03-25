@@ -16,7 +16,7 @@
 
 apply plugin: 'java-library'
 apply plugin: 'com.google.protobuf'
-apply from: "${rootDir}/gradle/publish-jar.gradle"
+apply plugin: 'com.palantir.external-publish-jar'
 
 dependencies {
     api 'com.google.protobuf:protobuf-java'
