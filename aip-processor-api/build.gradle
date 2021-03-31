@@ -16,7 +16,11 @@
 
 apply plugin: 'java-library'
 apply plugin: 'com.google.protobuf'
-apply plugin: 'com.palantir.external-publish-jar'
+apply plugin: 'com.palantir.external-publish-dist'
+
+distTar {
+    compression = Compression.GZIP
+}
 
 dependencies {
     api 'com.google.protobuf:protobuf-java'
