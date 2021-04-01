@@ -18,8 +18,7 @@ apply plugin: 'java-library'
 apply plugin: 'com.google.protobuf'
 apply plugin: 'com.palantir.external-publish-dist'
 
-distTar {
-    compression = Compression.GZIP
+task distTar(type: Tar) {
 }
 
 dependencies {
