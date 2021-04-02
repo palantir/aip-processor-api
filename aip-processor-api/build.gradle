@@ -19,6 +19,8 @@ apply plugin: 'com.google.protobuf'
 apply plugin: 'com.palantir.external-publish-dist'
 
 task distTar(type: Tar) {
+    from ('src/main/proto/')
+    include('*')
 }
 
 dependencies {
