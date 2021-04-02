@@ -1,0 +1,5 @@
+type: improvement
+improvement:
+  description: Publish to tarball instead of jar. This repo contains proto files for consumption, so it's best to publish it as a tarball.
+  links:
+  - https://github.com/palantir/aip-processor-api/pull/135
