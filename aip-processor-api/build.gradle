@@ -25,7 +25,6 @@ task distTar(type: Tar) {
 
 dependencies {
     api 'com.google.protobuf:protobuf-java'
-
     implementation 'io.grpc:grpc-protobuf'
     implementation 'io.grpc:grpc-stub'
 }
