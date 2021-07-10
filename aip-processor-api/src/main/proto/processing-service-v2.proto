@@ -36,6 +36,12 @@ service ProcessingService {
     /** Given airborne platform metadata and pixels, return inferences for objects found in the pixels. */
     rpc Infer (InferenceRequest) returns (InferenceResponse) {
     }
+    /** Given a stream of airborne platform metadata and pixels, return a stream of inferences for objects found in the pixels. */
+    rpc InferStream (stream InferenceRequest) returns (stream InferenceResponse) {
+    }
+    /** Accept in a repeated set of confidences corresponding to an ontology and update the inference engine as to what these should be. */
+    rpc SetInferenceConfidenceThreshold (Confidences) returns (ConfidenceAcknowledgement) {
+    }
     /**
      * Provide stable object identifiers for objects in the current frame given optional airborne platform metadata,
      * optional new inference information, and pixels.
@@ -54,6 +60,30 @@ enum ImageFormat {
     TIFF = 2;
     BGR888 = 3;
     NITF21 = 4;
+}
+
+/** Individual confidence threshold metric */
+message Confidence {
+    // The ontology class that this threshold applies to.
+    string class = 1;
+    /** 'Confidence' threshold value (this can be relative by detector, but it is value that will be tuned for a particular class and situation */
+    double confidene_threshold = 2;
+}
+
+/** Repeated confidence thresholds covering one or more classes. */
+message Confidences {
+    /** General confidence that should be use for any classes not specified.  Will also be the confidence used for all if no classes are specified. */
+    double general_confidence = 1;
+    /** Repeated confidence elements that define specific classes.  Can be empty if no specific classes are defined. */
+    repeated Confidence confidences = 2;
+}
+
+/** Acknowledgement.  This can be turned into a more generic acknowledgement if one already exists. */
+message ConfidenceAcknowledgement {
+    /** Error code: 0 = no error, >0 = error specific to process */
+    uint32 error_code = 1;
+    /** Human readable error message. */
+    string error_message = 2;
 }
 
 message ProcessorV2Config {
